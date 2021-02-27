@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Toy Robot Simulator</title>
+  <meta charset="UTF-8">
+  <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<%= yield %>
+
+<!-- ensure canvas was loaded -->
+<%= javascript_include_tag "robot" %>
+<script type="text/javascript" charset="utf-8">
+  $( document ).ready(function() {
+    initDrawingBoardAndRobot();
+    shortcut.add("Ctrl+Shift+N",function() { robot.moveTo("NORTH");});
+    shortcut.add("Ctrl+Shift+S",function() { robot.moveTo("SOUTH");});
+    shortcut.add("Ctrl+Shift+W",function() { robot.moveTo("WEST");});
+    shortcut.add("Ctrl+Shift+E",function() { robot.moveTo("EAST");});
+  });
+</script>
+</body>
+</html>
